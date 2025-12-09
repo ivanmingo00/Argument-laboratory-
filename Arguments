@@ -1,0 +1,102 @@
+# ====================================================================
+# Python Laboratory Activity: Working with Python Function Arguments
+# (FIXED VERSION)
+# ====================================================================
+
+## Part 1 & 2 — Basic, Positional, and Keyword Arguments
+
+# Define the function for Parts 1 & 2 (Positional arguments first)
+def describe_pet(animal_type, pet_name):
+    """Prints a simple description of a pet."""
+    print(f"\n--- Part 1/2 Output ---")
+    print(f"I have a {animal_type} and its name is {pet_name}.")
+
+print("--- Part 1: Basic Calls (Positional) ---")
+# Part 1 Tasks: Call the function three times
+describe_pet("hamster", "Fuzzball")
+describe_pet("parrot", "Squawk")
+describe_pet("rabbit", "Hoppy")
+
+print("\n--- Part 2: Positional vs Keyword ---")
+# Task 1: Positional arguments (order matters)
+describe_pet("dog", "Buddy")
+
+# Task 2: Keyword arguments (order reversed)
+describe_pet(pet_name="Milo", animal_type="cat")
+
+
+# --------------------------------------------------------------------
+
+## Part 3 — Default Arguments
+
+# Define a NEW function (describe_pet_default) with the default argument specified
+# The parameter with the default value (animal_type) MUST come after required parameters (pet_name)
+def describe_pet_default(pet_name, animal_type="dog"):
+    """Prints a simple description of a pet, defaulting animal_type to 'dog'."""
+    print(f"\n--- Part 3 Output ---")
+    print(f"I have a {animal_type} and its name is {pet_name}.")
+
+print("\n--- Part 3: Default Arguments ---")
+# Task 1: Call describe_pet_default("Brownie") - Uses default animal_type="dog"
+describe_pet_default("Brownie")
+
+# Task 2: Call describe_pet_default("Nugget", "chicken") - Overrides default
+describe_pet_default("Nugget", "chicken")
+
+
+# --------------------------------------------------------------------
+
+## Part 4 — Create Your Own Function (`order_drink`)
+
+def order_drink(drink, size="medium", iced=False):
+    """
+    Returns a string summarizing the drink order.
+    Defaults: size="medium", iced=False (hot).
+    """
+    iced_status = "iced" if iced else "hot"
+    return f"Your order: {size} {iced_status} {drink}"
+
+print("\n--- Part 4: Custom Function (order_drink) ---")
+# Task 1: Order a default drink (medium, hot coffee)
+print(order_drink("coffee"))
+
+# Task 2: Order a large hot chocolate (no ice)
+print(order_drink("chocolate", size="large", iced=False))
+
+# Task 3: Order a small iced milk tea (iced = True)
+print(order_drink("milk tea", "small", iced=True))
+
+
+# --------------------------------------------------------------------
+
+## Part 5 — Mini Challenge (Calculator)
+
+def compute(operation, num1, num2=1):
+    """
+    Performs 'add', 'multiply', or 'subtract' calculation.
+    num2 has a default value of 1.
+    """
+    # Using 'compute' here to match the user's execution style for easier comparison
+    print(f"\n--- Part 5 Output for compute('{operation}', {num1}, {num2}) ---")
+
+    if operation == "add":
+        return num1 + num2
+    elif operation == "multiply":
+        return num1 * num2
+    elif operation == "subtract":
+        return num1 - num2
+    else:
+        return "Invalid operation"
+
+print("\n--- Part 5: Mini Challenge (Calculator) ---")
+# Task 1: compute("add", 5, 10)
+print(f'Result: {compute("add", 5, 10)}')
+
+# Task 2: compute("multiply", num1=3, num2=4) (Keyword args)
+print(f'Result: {compute("multiply", num1=3, num2=4)}')
+
+# Task 3: compute("subtract", 20) (Use default num2=1)
+print(f'Result: {compute("subtract", 20)}')
+
+# Task 4: Try an invalid operation. (Used 'divide' previously, reverting to original task)
+print(f'Result: {compute("divide", 10, 5)}')
